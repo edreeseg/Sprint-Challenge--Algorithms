@@ -92,13 +92,58 @@ class SortingRobot:
         """
         return self._light == "ON"
 
-    def sort(self):
-        """
-        Sort the robot's list.
-        """
-        # Fill this out
-        pass
+    # def sort(self):
+    #     """
+    #     Sort the robot's list.
+    #     """
+    #     while not self.light_is_on():
+    #         self.set_light_on()
+    #         while self.can_move_right():
+    #             self.swap_item() # Drop the None value, should always start holding the None
+    #             self.move_right()
+    #             if self.compare_item() == 1:
+    #                 self.set_light_off()
+    #                 self.swap_item()
+    #                 self.move_left()
+    #                 self.swap_item()
+    #                 self.move_right()
+    #             else:
+    #                 self.move_left()
+    #                 self.swap_item()
+    #                 self.move_right()
+    #         if self.light_is_on():
+    #             break
+    #         else:
+    #             self.set_light_on()
+    #         while self.can_move_left():
+    #             self.swap_item()
+    #             self.move_left()
+    #             if self.compare_item() == -1:
+    #                 self.set_light_off()
+    #                 self.swap_item()
+    #                 self.move_right()
+    #                 self.swap_item()
+    #                 self.move_left()
+    #             else:
+    #                 self.move_right()
+    #                 self.swap_item()
+    #                 self.move_left()
 
+    def sort(self):
+        # Insertion sort
+        while self.can_move_right():
+            self.move_right()
+            self.swap_item()
+            self.move_left()
+            while self.compare_item() == -1 and self.can_move_left():
+                self.move_left()
+            if self.compare_item() == 1:
+                self.move_right()
+            while self.compare_item() != None:
+                self.swap_item()
+                self.move_right()
+            self.swap_item()
+                
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
@@ -110,3 +155,4 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
+
