@@ -16,6 +16,7 @@ You can treat an n-story building as essentially being a sorted list of numbers 
 
 The runtime would be O(logn), though it may be complicated by the extra comparisons we're making on each pass.  Still, this should only represent linear growth, and the possibility of finding `f` before the list is of size `1` is worth the extra comparisons.
 
+```py
 def floor_search(floors, left, right):
   if left == right:
     if egg breaks when dropped from floors[left]:
@@ -32,3 +33,4 @@ def floor_search(floors, left, right):
     return floor_search(floors, left, middle-1)
   else:
     return floor_search(floor, middle+1, right)
+```
